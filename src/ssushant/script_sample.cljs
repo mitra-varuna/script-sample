@@ -1,3 +1,6 @@
 (ns ssushant.script-sample)
 
-(js/console.log "Hello SSushant")
+(ns ^:figwheel-hooks ssushant.script-sample)
+
+(defn ^:after-load re-render []
+  (js/console.log "Hello Ssushant"))
