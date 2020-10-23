@@ -1,6 +1,15 @@
-(ns ssushant.script-sample)
+(ns ^:figwheel-hooks ssushant.script-sample
+  (:require [reagent.dom :as r.dom]))
 
-(ns ^:figwheel-hooks ssushant.script-sample)
+(defn app []
+  [:h1.site__title
+   [:span.site__title-text "Time Dive"]])
+
+(defn mount []
+  (r.dom/render [app]
+                (js/document.getElementById "root")))
 
 (defn ^:after-load re-render []
-  (js/console.log "Hello Ssushant"))
+  (mount))
+
+(defonce start-up (do (mount) true))
